@@ -1,0 +1,19 @@
+<ng-container *ngIf="product !== null">
+
+	<div class="catalog__card-product card-product">
+		<span class="card-product__type">
+			{{ product.productType }}
+		</span>
+		<h3 class="card-product__title">
+			{{ product.title }}
+		</h3>
+		<div class="card-product__img-wrapper">
+			<img [src]="product.imgUrl" alt="" class="card-product__img">
+		</div>
+		<span class="card-product__price">
+			{{ product.price }} {{ product.currency }}
+		</span>
+	</div>
+
+</ng-container>
+
