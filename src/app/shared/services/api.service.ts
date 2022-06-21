@@ -12,12 +12,12 @@ export class ApiService {
 	constructor(private http: HttpClient) {}
 
 	public createProduct(product: Product): Observable<FirebaseCreateProduct> {
-		return this.http.post<FirebaseCreateProduct>(`/api/products.json`, product);
+		return this.http.post<FirebaseCreateProduct>(`${this.urlFirebase}/products.json`, product);
 	}
 
 	public getAllProducts(): Observable<Product[]> {
 		return this.http
-		.get<Product[]>(`/api/products.json`)
+		.get<Product[]>(`${this.urlFirebase}/products.json`)
 		.pipe(
 			map((productsObj: any) => {
 				if (!productsObj) {
@@ -30,4 +30,5 @@ export class ApiService {
 			})
 		)
 	}
+
 }

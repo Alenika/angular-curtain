@@ -7,7 +7,17 @@
 			<div class="catalog">
 
 				<div class="catalog__products">
-					<div class="catalog__card-product"></div>
+
+					<ng-container *ngIf="allProductsObservable | async as allProducts">
+						<ng-container *ngIf="allProducts.length !== 0">
+							<ng-container *ngFor="let product of allProducts">
+
+								<app-card-product [product]="product"></app-card-product>
+
+							</ng-container>
+						</ng-container>
+					</ng-container>
+
 				</div>
 
 			</div>

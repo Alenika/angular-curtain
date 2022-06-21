@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces/interfaces-global';
 import { ApiService } from 'src/app/shared/services/api.service';
 
@@ -8,6 +9,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./page-catalog.component.scss']
 })
 export class PageCatalogComponent implements OnInit {
+
+	allProductsObservable: Observable<Product[]> = this.apiService.getAllProducts();
 
   constructor(private apiService: ApiService) { }
 
@@ -27,16 +30,17 @@ export class PageCatalogComponent implements OnInit {
 			currency: 'BYN'
 		};
 
+		// this.apiService.createProduct(product)
+		// .subscribe((product) => {
+		// 	console.log(product);
+		// });
+
 		this.apiService.getAllProducts()
 		.subscribe(products => {
 			console.log(products);
 
 		})
 
-		// this.apiService.createProduct(product)
-		// .subscribe((product) => {
-		// 	console.log(product);
-		// });
   }
 
 }
